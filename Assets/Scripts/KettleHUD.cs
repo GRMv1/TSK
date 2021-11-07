@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LiquidHUD : MonoBehaviour
+public class KettleHUD : MonoBehaviour
 {
-    public GameObject kettleHUD;
-
+    public GameObject environmentHUD;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +20,6 @@ public class LiquidHUD : MonoBehaviour
     public void OnClickButton()
     {
         gameObject.SetActive(false);
-        kettleHUD.SetActive(true);
+        environmentHUD.SetActive(true);
     }
 }
