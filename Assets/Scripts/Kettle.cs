@@ -15,18 +15,19 @@ public class Kettle : MonoBehaviour
     GameObject water;
     Transform newTransform;
     // Start is called before the first frame update
+
     void Start()
     {
-        
-        water = this.gameObject.transform.GetChild(0).gameObject;
-        newTransform = this.gameObject.transform;
-        water.transform.localScale = new Vector3(0.25f, 0.25f,1);
-        for (int i = 0; i< waterDropNumber; i++)
+        if(this.gameObject.transform.childCount!=0)
         {
-            Instantiate(water, newTransform.position, newTransform.rotation, newTransform);
+            water = this.gameObject.transform.GetChild(0).gameObject;
+            newTransform = this.gameObject.transform;
+            water.transform.localScale = new Vector3(0.25f, 0.25f, 1);
+            for (int i = 0; i < waterDropNumber; i++)
+            {
+                Instantiate(water, newTransform.position, newTransform.rotation, newTransform);
+            }
         }
-            
-
         powerValueTxt = GetComponent<Text>();
         efficiencyValueTxt = GetComponent<Text>();
     }
