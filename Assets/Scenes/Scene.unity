@@ -2648,6 +2648,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956517923}
   m_CullTransparentMesh: 1
+--- !u!1 &975193650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7579668806569257436, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
+  m_PrefabInstance: {fileID: 1424402678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &977633772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,6 +4034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kettle
       objectReference: {fileID: 0}
+    - target: {fileID: 7579668806569257436, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
 --- !u!1 &1439180307
@@ -5372,3 +5381,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f994b3a6ac2184480c80661f60c3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kettle: {fileID: 975193650}

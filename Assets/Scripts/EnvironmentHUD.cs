@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnvironmentHUD : MonoBehaviour
 {
+    public GameObject kettle;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +20,6 @@ public class EnvironmentHUD : MonoBehaviour
     public void OnClickButton()
     {
         gameObject.SetActive(false);
+        kettle.SetActive(true);
     }
 }
