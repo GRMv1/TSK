@@ -7,7 +7,7 @@ public class EnvironmentHUD : MonoBehaviour
 {
     public GameObject kettle;
 
-    float pressureValue = 75;
+    public static float pressureValue = 75;
 
     Text pressureValueTxt;
     // Start is called before the first frame update
