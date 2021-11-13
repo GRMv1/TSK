@@ -288,7 +288,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630781820}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Liquid, Assembly-CSharp
         m_MethodName: ChangeT1Value
         m_Mode: 0
@@ -535,7 +535,6 @@ GameObject:
   - component: {fileID: 179221536}
   - component: {fileID: 179221538}
   - component: {fileID: 179221537}
-  - component: {fileID: 179221539}
   m_Layer: 0
   m_Name: EfficiencyValue
   m_TagString: Untagged
@@ -604,19 +603,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179221535}
   m_CullTransparentMesh: 1
---- !u!114 &179221539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179221535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12696c1e771578b41b4c13319b02b452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterDropNumber: 0
 --- !u!1 &179523732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1339,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1398970897}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Liquid, Assembly-CSharp
         m_MethodName: ChangeMassValue
         m_Mode: 0
@@ -1521,7 +1507,6 @@ GameObject:
   - component: {fileID: 585257861}
   - component: {fileID: 585257863}
   - component: {fileID: 585257862}
-  - component: {fileID: 585257864}
   m_Layer: 5
   m_Name: PowerValue
   m_TagString: Untagged
@@ -1590,19 +1575,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585257860}
   m_CullTransparentMesh: 1
---- !u!114 &585257864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585257860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12696c1e771578b41b4c13319b02b452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterDropNumber: 0
 --- !u!1 &630781818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1586,6 @@ GameObject:
   - component: {fileID: 630781819}
   - component: {fileID: 630781822}
   - component: {fileID: 630781821}
-  - component: {fileID: 630781820}
   m_Layer: 0
   m_Name: T1Value
   m_TagString: Untagged
@@ -1641,18 +1612,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00064738, y: 0}
   m_SizeDelta: {x: 160, y: 46.3794}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &630781820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630781818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b73e9c19d634ef43bebaa4270f633c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &630781821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2194,7 +2153,6 @@ GameObject:
   - component: {fileID: 812452529}
   - component: {fileID: 812452532}
   - component: {fileID: 812452531}
-  - component: {fileID: 812452530}
   m_Layer: 5
   m_Name: PressureValue
   m_TagString: Untagged
@@ -2221,18 +2179,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.011047, y: -7.9251}
   m_SizeDelta: {x: 169.4332, y: 44.1499}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &812452530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812452528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e3ec6791919ff498119b775641c7d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &812452531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2913,7 +2859,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 585257864}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kettle, Assembly-CSharp
         m_MethodName: ChangePowerValue
         m_Mode: 0
@@ -2936,7 +2882,6 @@ GameObject:
   - component: {fileID: 1055197702}
   - component: {fileID: 1055197705}
   - component: {fileID: 1055197704}
-  - component: {fileID: 1055197703}
   m_Layer: 0
   m_Name: T2Value
   m_TagString: Untagged
@@ -2963,18 +2908,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00056137, y: 0.0000019073}
   m_SizeDelta: {x: 160, y: 47.4031}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1055197703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055197701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b73e9c19d634ef43bebaa4270f633c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1055197704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3344,7 +3277,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1055197703}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Liquid, Assembly-CSharp
         m_MethodName: ChangeT2Value
         m_Mode: 0
@@ -3521,7 +3454,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 179221539}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kettle, Assembly-CSharp
         m_MethodName: ChangeEfficiencyValue
         m_Mode: 0
@@ -3722,7 +3655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -286.77277, y: -94.453995}
+  m_AnchoredPosition: {x: -286.7727, y: -94.453995}
   m_SizeDelta: {x: -573.5555, y: -251.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1338459496
@@ -3811,7 +3744,6 @@ GameObject:
   - component: {fileID: 1398970896}
   - component: {fileID: 1398970899}
   - component: {fileID: 1398970898}
-  - component: {fileID: 1398970897}
   m_Layer: 5
   m_Name: MassValue
   m_TagString: Untagged
@@ -3838,18 +3770,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000030453, y: 0.0000076294}
   m_SizeDelta: {x: 196.3198, y: 62.1291}
   m_Pivot: {x: 0.5, y: 0.5000001}
---- !u!114 &1398970897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398970895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b73e9c19d634ef43bebaa4270f633c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1398970898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5281,7 +5201,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 812452530}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Environment, Assembly-CSharp
         m_MethodName: ChangePressureValue
         m_Mode: 0

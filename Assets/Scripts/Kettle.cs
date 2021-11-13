@@ -5,13 +5,8 @@ using UnityEngine.UI;
 
 public class Kettle : MonoBehaviour
 {
-    float powerValue = 500;
-    float efficiencyValue = 1;
-
     public int waterDropNumber = 0;
-
-    Text powerValueTxt;
-    Text efficiencyValueTxt;
+    
     GameObject water;
     Transform newTransform;
     // Start is called before the first frame update
@@ -28,8 +23,7 @@ public class Kettle : MonoBehaviour
                 Instantiate(water, newTransform.position, newTransform.rotation, newTransform);
             }
         }
-        powerValueTxt = GetComponent<Text>();
-        efficiencyValueTxt = GetComponent<Text>();
+        
     }
 
     // Update is called once per frame
@@ -38,14 +32,5 @@ public class Kettle : MonoBehaviour
         
     }
 
-    public void ChangePowerValue(float value)
-    {
-        powerValue = value;
-        powerValueTxt.text = value.ToString();
-    }
-    public void ChangeEfficiencyValue(float value)
-    {
-        efficiencyValue = value;
-        efficiencyValueTxt.text = value.ToString();
-    }
+    
 }
