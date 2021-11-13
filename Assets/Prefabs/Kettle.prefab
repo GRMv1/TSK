@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12696c1e771578b41b4c13319b02b452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterDropNumber: 150
+  mass: 2000
 --- !u!1001 &6940003689604992118
 PrefabInstance:
   m_ObjectHideFlags: 0

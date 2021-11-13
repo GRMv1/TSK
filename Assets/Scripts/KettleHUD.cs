@@ -7,16 +7,16 @@ public class KettleHUD : MonoBehaviour
 {
     public GameObject environmentHUD;
 
-    float powerValue = 500;
-    float efficiencyValue = 1;
+    public static float powerValue = 500;
+    public static float efficiencyValue = 1;
 
     Text powerValueTxt;
     Text efficiencyValueTxt;
     // Start is called before the first frame update
     void Start()
     {
-        powerValueTxt = GetComponent<Text>();
-        efficiencyValueTxt = GetComponent<Text>();
+        powerValueTxt = this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<Text>();
+        efficiencyValueTxt = this.gameObject.transform.GetChild(1).GetChild(2).GetComponent<Text>();
     }
 
     // Update is called once per frame

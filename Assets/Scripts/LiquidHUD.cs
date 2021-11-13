@@ -7,9 +7,9 @@ public class LiquidHUD : MonoBehaviour
 {
     public GameObject kettleHUD;
 
-    float massValue = 2;
-    float t1Value = 1;
-    float t2Value = 21;
+    public static float massValue = 2;
+    public static float t1Value = 1;
+    public static float t2Value = 21;
 
     Text massValueTxt;
     Text t1ValueTxt;
@@ -18,9 +18,9 @@ public class LiquidHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        massValueTxt = GetComponent<Text>();
-        t1ValueTxt = GetComponent<Text>();
-        t2ValueTxt = GetComponent<Text>();
+        massValueTxt = this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<Text>();
+        t1ValueTxt = this.gameObject.transform.GetChild(1).GetChild(2).GetComponent<Text>();
+        t2ValueTxt = this.gameObject.transform.GetChild(2).GetChild(2).GetComponent<Text>();
     }
 
     // Update is called once per frame

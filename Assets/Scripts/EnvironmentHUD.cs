@@ -13,7 +13,7 @@ public class EnvironmentHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pressureValueTxt = GetComponent<Text>();
+        pressureValueTxt = this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<Text>();
     }
 
     // Update is called once per frame
