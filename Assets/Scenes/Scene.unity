@@ -1395,6 +1395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   liquidHUD: {fileID: 754253105}
+  kettleHUD: {fileID: 841524283}
+  envHUD: {fileID: 2142957961}
 --- !u!1 &568435340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3945,6 +3947,14 @@ PrefabInstance:
     - target: {fileID: -3771573009142109361, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: mass
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356974241539927833, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
+      propertyPath: wiggleSpeedX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356974241539927833, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
+      propertyPath: wiggleSpeedY
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7304086860540915169, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: m_RootOrder
