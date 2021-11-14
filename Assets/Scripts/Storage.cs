@@ -50,15 +50,18 @@ public class Storage : MonoBehaviour
     {
 
         //time = {[m * Cliquid * (tw – t1)] + (n * deltaH) + [m * Cgas * (t2 – tw)]}/( efficiency * P)
-
-        float boilingTemp = 100.0f;
+        // boilingTemp = ((1/T0) - ((R * ln(P/P0))/deltaHvap))^-1
+        //float boilingTemp = 100.0f;
+        float boilingTemp = Mathf.Pow((1.0f / 100.0f) - (8.3145f * Mathf.Log(pressureValue / 1000.0f) / 2257.0f), -1.0f);
         float time;
         float Cliquid = 4.1899f;           // J/(g * °C )
         float Cgas = 1.890f;              // J/(g * °C )
         float n = massValue / 18.02f;   // mol
         float deltaH = 40.7f;           // kJ/mol
 
-        if(t2Value>100)
+        
+
+        if (t2Value>100)
         {
             time = ((massValue * Cliquid * (boilingTemp - t1Value)) + (n * deltaH * 1000) + (massValue * Cgas * (t2Value - boilingTemp))) / ((efficiencyValue/100) * powerValue);
         }
@@ -69,5 +72,23 @@ public class Storage : MonoBehaviour
         
 
         return time;
+    }
+
+    public float GetTurnToSteamTime()
+    {
+        float n = massValue / 18.02f;   // mol
+        float deltaH = 40.7f;           // kJ/mol
+
+        float turnToSteamTime = (n * deltaH * 1000) / ((efficiencyValue / 100) * powerValue);
+        return turnToSteamTime;
+    }
+
+    public float GetBoilingTemp()
+    {
+        // boilingTemp = ((1/T0) - ((R * ln(P/P0))/deltaHvap))^-1
+
+        float boilingTemp = Mathf.Pow((1.0f / 100.0f) - (8.3145f * Mathf.Log(pressureValue / 1000.0f) / 2257.0f), -1.0f);
+
+        return boilingTemp;
     }
 }
