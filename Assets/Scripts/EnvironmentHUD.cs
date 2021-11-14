@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnvironmentHUD : MonoBehaviour
 {
     public GameObject kettle;
+    public GameObject TimeHUD;
 
     public static float pressureValue = 75;
 
@@ -26,6 +27,7 @@ public class EnvironmentHUD : MonoBehaviour
     {
         gameObject.SetActive(false);
         kettle.SetActive(true);
+        TimeHUD.SetActive(true);
     }
     public void ChangePressureValue(float value)
     {
