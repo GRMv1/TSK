@@ -7,6 +7,7 @@ public class TimeHUD : MonoBehaviour
 {
     [SerializeField] Storage Storage;
 
+    [SerializeField] Kettle kettle;
     float time;
     float boilingTemp;
     Text timeTxt;
@@ -54,6 +55,7 @@ public class TimeHUD : MonoBehaviour
         {
             time = time - 1;
             timeTxt.text = time.ToString();
+            kettle.UpdateDropSpeed();
         }
         
     }

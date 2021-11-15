@@ -13,6 +13,12 @@ public class Kettle : MonoBehaviour
     GameObject water;
     Transform newTransform;
     WaterDrop[] waterDropTable;
+
+    [SerializeField]
+    private Storage storage;
+    //private GameObject storage;
+
+
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -35,6 +41,14 @@ public class Kettle : MonoBehaviour
 
         waterDropTable = FindObjectsOfType<WaterDrop>();
         //Debug.Log(waterDropTable[0].name);
+    }
+
+    public void UpdateDropSpeed()
+    {
+        foreach (WaterDrop w in waterDropTable)
+        {
+            w.SetSpeed(w.GetSpeed()+storage.increaseSpeed);
+        }
     }
 
     // Update is called once per frame

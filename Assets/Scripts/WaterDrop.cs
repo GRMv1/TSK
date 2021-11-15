@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WaterDrop : MonoBehaviour
 {
-    public float wiggleSpeedY = 0.1f;
-    public float wiggleSpeedX = 0.0f;
+    public float wiggleSpeedY = 0.0f;
+    float wiggleSpeedX = 0.0f;
+    public static float maxSpeedY = 0.2f;
 
     public static float dropMass = 10;
     // Start is called before the first frame update
@@ -18,6 +19,15 @@ public class WaterDrop : MonoBehaviour
     void Update()
     {
         
+    }
+    public float GetSpeed()
+    {
+        return wiggleSpeedY;
+    }    
+
+    public void SetSpeed( float newSpeed )
+    {
+        wiggleSpeedY = newSpeed;
     }
 
     public void Wiggle()
