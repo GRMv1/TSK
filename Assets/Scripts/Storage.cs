@@ -47,6 +47,35 @@ public class Storage : MonoBehaviour
         }
     }
 
+    public float GetTurnToSteamTime()
+    {
+        float n = massValue / 18.02f;   // mol
+        float deltaH = 40.7f;           // kJ/mol
+
+        float turnToSteamTime = (n * deltaH * 1000) / ((efficiencyValue / 100) * powerValue);
+        return turnToSteamTime;
+    }
+
+    public float GetTimeBeforeBoiling()
+    {
+        float Cliquid = 4.1899f;           // J/(g * °C )
+        float boilingTemp = Mathf.Pow((1.0f / 100.0f) - (8.3145f * Mathf.Log(pressureValue / 1000.0f) / 2257.0f), -1.0f);
+
+        float timeBeforeBoiling = (massValue * Cliquid * (boilingTemp - t1Value)) / ((efficiencyValue / 100) * powerValue);
+
+        return timeBeforeBoiling;
+    }
+
+    public float GetTimeAfterBoiling()
+    {
+        float Cgas = 1.890f;              // J/(g * °C )
+        float boilingTemp = Mathf.Pow((1.0f / 100.0f) - (8.3145f * Mathf.Log(pressureValue / 1000.0f) / 2257.0f), -1.0f);
+
+        float timeAfterBoiling = (massValue * Cgas * (t2Value - boilingTemp)) / ((efficiencyValue / 100) * powerValue);
+
+        return timeAfterBoiling;
+    }
+
     public float GetTime()
     {
 
@@ -60,11 +89,11 @@ public class Storage : MonoBehaviour
         float n = massValue / 18.02f;   // mol
         float deltaH = 40.7f;           // kJ/mol
 
-        
 
-        if (t2Value>100)
+
+        if (t2Value > 100)
         {
-            time = ((massValue * Cliquid * (boilingTemp - t1Value)) + (n * deltaH * 1000) + (massValue * Cgas * (t2Value - boilingTemp))) / ((efficiencyValue/100) * powerValue);
+            time = ((massValue * Cliquid * (boilingTemp - t1Value)) + (n * deltaH * 1000) + (massValue * Cgas * (t2Value - boilingTemp))) / ((efficiencyValue / 100) * powerValue);
         }
         else
         {
@@ -73,16 +102,8 @@ public class Storage : MonoBehaviour
 
         increaseSpeed = WaterDrop.maxSpeedY / time;
 
-        return time;
-    }
-
-    public float GetTurnToSteamTime()
-    {
-        float n = massValue / 18.02f;   // mol
-        float deltaH = 40.7f;           // kJ/mol
-
-        float turnToSteamTime = (n * deltaH * 1000) / ((efficiencyValue / 100) * powerValue);
-        return turnToSteamTime;
+        //return time;
+        return GetTimeBeforeBoiling() + GetTimeAfterBoiling() + GetTurnToSteamTime();
     }
 
     public float GetBoilingTemp()
