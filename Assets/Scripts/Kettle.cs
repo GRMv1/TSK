@@ -9,6 +9,9 @@ public class Kettle : MonoBehaviour
     int waterDropNumber = 9;
     private static float waterDropMass;
     public float mass;
+
+    public float increaseSpeed;
+    public float secondsToEvaporate;
     //public float mass = 0;
     GameObject water;
     Transform newTransform;
@@ -40,17 +43,22 @@ public class Kettle : MonoBehaviour
         }
 
         waterDropTable = FindObjectsOfType<WaterDrop>();
-        //Debug.Log(waterDropTable[0].name);
+        
+        increaseSpeed = WaterDrop.maxSpeedY / storage.GetTime();
+
+        //secondsToEvaporate = Mathf.RoundToInt(storage.GetTurnToSteamTime()/waterDropNumber);
+        secondsToEvaporate = storage.GetTurnToSteamTime() / waterDropNumber;
+        //Debug.Log(secondsToEvaporate);
     }
 
     public void UpdateDropSpeed()
     {
         foreach (WaterDrop w in waterDropTable)
         {
-            w.SetSpeed(w.GetSpeed()+storage.increaseSpeed);
+            w.SetSpeed(w.GetSpeed()+increaseSpeed);
         }
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -60,5 +68,13 @@ public class Kettle : MonoBehaviour
         }
     }
 
+    public void ChangeToSteam(int number)
+    {
+        //foreach (WaterDrop w in waterDropTable)
+        //{
+        //    w.Evaporate();
+        //}
+        waterDropTable[number].Evaporate();
+    }
     
 }

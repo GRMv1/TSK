@@ -1473,7 +1473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fb9d1fb972dc9458c5f3ac890cc579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increaseSpeed: 0
   liquidHUD: {fileID: 754253105}
   kettleHUD: {fileID: 841524283}
   envHUD: {fileID: 2142957961}
@@ -2831,11 +2830,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 8.03
   m_Points:
-  - {x: -1.12, y: 1.91}
+  - {x: -1.11, y: 2.04}
   - {x: -1.83, y: -2.2}
   - {x: 1.84, y: -2.2}
-  - {x: 0.94, y: 1.91}
-  - {x: -1.15, y: 1.89}
+  - {x: 0.9198962, y: 2.0444384}
+  - {x: -1.130249, y: 2.0418448}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

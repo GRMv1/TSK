@@ -10,7 +10,7 @@ public class Storage : MonoBehaviour
     public static float powerValue;         //W
     public static float efficiencyValue;    //%
     public static float pressureValue;      //hPa
-    public float increaseSpeed;
+    
 
     [SerializeField]
     private GameObject liquidHUD;
@@ -100,7 +100,7 @@ public class Storage : MonoBehaviour
             time = (massValue * Cliquid * (boilingTemp - t1Value)) / ((efficiencyValue / 100) * powerValue);
         }
 
-        increaseSpeed = WaterDrop.maxSpeedY / time;
+        
 
         //return time;
         return GetTimeBeforeBoiling() + GetTimeAfterBoiling() + GetTurnToSteamTime();

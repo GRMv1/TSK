@@ -134,4 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a9d82499028f7439fa4036533fd916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropMass: 10
+  wiggleSpeedY: 0
