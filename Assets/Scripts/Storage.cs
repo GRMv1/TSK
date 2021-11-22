@@ -102,8 +102,8 @@ public class Storage : MonoBehaviour
 
         
 
-        //return time;
-        return GetTimeBeforeBoiling() + GetTimeAfterBoiling() + GetTurnToSteamTime();
+        return time;
+        //return GetTimeBeforeBoiling() + GetTimeAfterBoiling() + GetTurnToSteamTime();
     }
 
     public float GetBoilingTemp()
@@ -113,5 +113,10 @@ public class Storage : MonoBehaviour
         float boilingTemp = Mathf.Pow((1.0f / 100.0f) - (8.3145f * Mathf.Log(pressureValue / 1000.0f) / 2257.0f), -1.0f);
 
         return boilingTemp;
+    }
+
+    public float GetT1Value()
+    {
+        return t1Value;
     }
 }

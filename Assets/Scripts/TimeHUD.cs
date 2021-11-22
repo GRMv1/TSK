@@ -15,12 +15,17 @@ public class TimeHUD : MonoBehaviour
     int iteratorBoil = 0;
     bool invokeOnce = false;
 
+    float elapsed = 0f;
+    Text currentTimeTxt;
+    float currTemp = -1.0f;
+
     bool passed = false;
     // Start is called before the first frame update
     void Start()
     {
         timeTxt = this.gameObject.transform.GetChild(1).GetComponent<Text>();
         boilingTempTxt = this.gameObject.transform.GetChild(3).GetComponent<Text>();
+        currentTimeTxt = this.gameObject.transform.GetChild(5).GetComponent<Text>();
 
         time = Storage.GetTime();
         time = Mathf.Round(time);
@@ -30,13 +35,21 @@ public class TimeHUD : MonoBehaviour
         boilingTemp = Mathf.Round(boilingTemp);
         boilingTempTxt.text = boilingTemp.ToString();
 
-        InvokeRepeating("TimePassed", 0.0f, 1f);
+        InvokeRepeating("TimeRemaining", 0.0f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isActiveAndEnabled)
+
+        elapsed += Time.deltaTime;
+        if (elapsed >= 1f)
+        {
+            elapsed = elapsed % 1f;
+            currentTimeTxt.text = (CurrentTemp()).ToString();
+        }
+
+        if (isActiveAndEnabled)
         {
             if(!passed)
             {
@@ -56,7 +69,7 @@ public class TimeHUD : MonoBehaviour
         }
     }
 
-    void TimePassed()
+    void TimeRemaining()
     {
         if(time>0)
         {
@@ -65,6 +78,37 @@ public class TimeHUD : MonoBehaviour
             kettle.UpdateDropSpeed();
         }
         
+    }
+
+    float CurrentTemp()
+    {
+        float tempPerSecond = (Storage.GetBoilingTemp() - Storage.GetT1Value()) / Storage.GetTimeBeforeBoiling();
+
+        if (currTemp == -1.0f)
+        {
+            currTemp = Storage.GetT1Value();
+            currTemp = Mathf.Round(currTemp);
+        }
+        else
+        {
+            if (currTemp < boilingTemp)
+            {
+                currTemp = currTemp + tempPerSecond;
+                if (currTemp > boilingTemp)
+                {
+                    currTemp = boilingTemp;
+                }
+                currTemp = Mathf.Round(currTemp);
+            }
+            else
+            {
+                currTemp = boilingTemp;
+            }
+        }
+        
+        
+        
+        return currTemp;
     }
 
     void Evaporation()
