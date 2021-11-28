@@ -43,8 +43,9 @@ public class Kettle : MonoBehaviour
         }
 
         waterDropTable = FindObjectsOfType<WaterDrop>();
-        
+
         increaseSpeed = WaterDrop.maxSpeedY / storage.GetTime();
+        //increaseSpeed = 0.00012f;
 
         //secondsToEvaporate = Mathf.RoundToInt(storage.GetTurnToSteamTime()/waterDropNumber);
         secondsToEvaporate = storage.GetTurnToSteamTime() / waterDropNumber;

@@ -65,9 +65,12 @@ public class TimeHUD : MonoBehaviour
             if(!passed)
             {
                 //time = Storage.GetTurnToSteamTime();
+                if(Storage.lessThanBoilingTemp)
+                    kettle.increaseSpeed = 0.00015f;
 
-                if (time - Storage.GetTurnToSteamTime() - Storage.GetTimeAfterBoiling() <= 0 && !invokeOnce)
+                if ( (time - Storage.GetTurnToSteamTime() - Storage.GetTimeAfterBoiling() <= 0) && !invokeOnce && !Storage.lessThanBoilingTemp)
                 {
+                    
                     InvokeRepeating("Evaporation", 0.0f, kettle.secondsToEvaporate);
                     invokeOnce = true;
                 }
