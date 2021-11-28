@@ -16,8 +16,12 @@ public class TimeHUD : MonoBehaviour
     bool invokeOnce = false;
 
     float elapsed = 0f;
-    Text currentTimeTxt;
+    Text currentTempTxt;
     float currTemp = -1.0f;
+
+    Text turntosteamtimetxt;
+    Text timebeforeboilingtxt;
+    Text timeafterboiling;
 
     bool passed = false;
     // Start is called before the first frame update
@@ -25,7 +29,14 @@ public class TimeHUD : MonoBehaviour
     {
         timeTxt = this.gameObject.transform.GetChild(1).GetComponent<Text>();
         boilingTempTxt = this.gameObject.transform.GetChild(3).GetComponent<Text>();
-        currentTimeTxt = this.gameObject.transform.GetChild(5).GetComponent<Text>();
+        currentTempTxt = this.gameObject.transform.GetChild(5).GetComponent<Text>();
+        turntosteamtimetxt = this.gameObject.transform.GetChild(7).GetComponent<Text>();
+        timebeforeboilingtxt = this.gameObject.transform.GetChild(9).GetComponent<Text>();
+        timeafterboiling = this.gameObject.transform.GetChild(11).GetComponent<Text>();
+
+        turntosteamtimetxt.text = Storage.GetTurnToSteamTime().ToString();
+        timebeforeboilingtxt.text = Storage.GetTimeBeforeBoiling().ToString();
+        timeafterboiling.text = Storage.GetTimeAfterBoiling().ToString();
 
         time = Storage.GetTime();
         time = Mathf.Round(time);
@@ -46,7 +57,7 @@ public class TimeHUD : MonoBehaviour
         if (elapsed >= 1f)
         {
             elapsed = elapsed % 1f;
-            currentTimeTxt.text = (CurrentTemp()).ToString();
+            currentTempTxt.text = (CurrentTemp()).ToString();
         }
 
         if (isActiveAndEnabled)
@@ -82,7 +93,9 @@ public class TimeHUD : MonoBehaviour
 
     float CurrentTemp()
     {
-        float tempPerSecond = (Storage.GetBoilingTemp() - Storage.GetT1Value()) / Storage.GetTimeBeforeBoiling();
+        float tempPerSecondBeforeBoiling = (Storage.GetBoilingTemp() - Storage.GetT1Value()) / Storage.GetTimeBeforeBoiling();
+
+        float tempPerSecondAfterBoiling = (Storage.GetT2Value() - Storage.GetBoilingTemp()) / Storage.GetTimeAfterBoiling();
 
         if (currTemp == -1.0f)
         {
@@ -93,16 +106,25 @@ public class TimeHUD : MonoBehaviour
         {
             if (currTemp < boilingTemp)
             {
-                currTemp = currTemp + tempPerSecond;
+                currTemp = currTemp + tempPerSecondBeforeBoiling;
                 if (currTemp > boilingTemp)
                 {
                     currTemp = boilingTemp;
                 }
-                currTemp = Mathf.Round(currTemp);
+                currTemp = Mathf.Round(currTemp * 100f) / 100f;
             }
             else
             {
                 currTemp = boilingTemp;
+            }
+            if(currTemp == boilingTemp && time - Storage.GetTimeAfterBoiling() <= 0)
+            {
+                currTemp = currTemp + tempPerSecondAfterBoiling;
+                if (currTemp <= Storage.GetT2Value())
+                {
+                    currTemp = Storage.GetT2Value();
+                }
+                currTemp = Mathf.Round(currTemp * 100f) / 100f;
             }
         }
         

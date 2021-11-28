@@ -10,6 +10,7 @@ public class Storage : MonoBehaviour
     public static float powerValue;         //W
     public static float efficiencyValue;    //%
     public static float pressureValue;      //hPa
+    public bool lessThanBoilingTemp;
     
 
     [SerializeField]
@@ -91,13 +92,15 @@ public class Storage : MonoBehaviour
 
 
 
-        if (t2Value > 100)
+        if (t2Value > boilingTemp)
         {
             time = ((massValue * Cliquid * (boilingTemp - t1Value)) + (n * deltaH * 1000) + (massValue * Cgas * (t2Value - boilingTemp))) / ((efficiencyValue / 100) * powerValue);
+            lessThanBoilingTemp = false;
         }
         else
         {
             time = (massValue * Cliquid * (boilingTemp - t1Value)) / ((efficiencyValue / 100) * powerValue);
+            lessThanBoilingTemp = true;
         }
 
         
@@ -118,5 +121,10 @@ public class Storage : MonoBehaviour
     public float GetT1Value()
     {
         return t1Value;
+    }
+
+    public float GetT2Value()
+    {
+        return t2Value;
     }
 }
