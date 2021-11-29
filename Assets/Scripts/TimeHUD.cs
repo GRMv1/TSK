@@ -19,9 +19,6 @@ public class TimeHUD : MonoBehaviour
     Text currentTempTxt;
     float currTemp = -1.0f;
 
-    Text turntosteamtimetxt;
-    Text timebeforeboilingtxt;
-    Text timeafterboiling;
 
     bool passed = false;
     // Start is called before the first frame update
@@ -30,13 +27,7 @@ public class TimeHUD : MonoBehaviour
         timeTxt = this.gameObject.transform.GetChild(1).GetComponent<Text>();
         boilingTempTxt = this.gameObject.transform.GetChild(3).GetComponent<Text>();
         currentTempTxt = this.gameObject.transform.GetChild(5).GetComponent<Text>();
-        turntosteamtimetxt = this.gameObject.transform.GetChild(7).GetComponent<Text>();
-        timebeforeboilingtxt = this.gameObject.transform.GetChild(9).GetComponent<Text>();
-        timeafterboiling = this.gameObject.transform.GetChild(11).GetComponent<Text>();
-
-        turntosteamtimetxt.text = Storage.GetTurnToSteamTime().ToString();
-        timebeforeboilingtxt.text = Storage.GetTimeBeforeBoiling().ToString();
-        timeafterboiling.text = Storage.GetTimeAfterBoiling().ToString();
+        
 
         time = Storage.GetTime();
         time = Mathf.Round(time);
@@ -96,7 +87,17 @@ public class TimeHUD : MonoBehaviour
 
     float CurrentTemp()
     {
-        float tempPerSecondBeforeBoiling = (Storage.GetBoilingTemp() - Storage.GetT1Value()) / Storage.GetTimeBeforeBoiling();
+        float tempPerSecondBeforeBoiling;
+
+        if (Storage.GetT2Value() < boilingTemp)
+        {
+            tempPerSecondBeforeBoiling = (Storage.GetT2Value() - Storage.GetT1Value()) / Storage.GetTimeBeforeT2();
+        }
+        else
+        {
+            tempPerSecondBeforeBoiling = (Storage.GetBoilingTemp() - Storage.GetT1Value()) / Storage.GetTimeBeforeBoiling();
+        }
+        
 
         float tempPerSecondAfterBoiling = (Storage.GetT2Value() - Storage.GetBoilingTemp()) / Storage.GetTimeAfterBoiling();
 
@@ -107,28 +108,50 @@ public class TimeHUD : MonoBehaviour
         }
         else
         {
-            if (currTemp < boilingTemp)
+            if(boilingTemp < Storage.GetT2Value())
             {
-                currTemp = currTemp + tempPerSecondBeforeBoiling;
-                if (currTemp > boilingTemp)
+                if (currTemp < boilingTemp)
+                {
+                    currTemp = currTemp + tempPerSecondBeforeBoiling;
+                    if (currTemp > boilingTemp)
+                    {
+                        currTemp = boilingTemp;
+                    }
+                    currTemp = Mathf.Round(currTemp * 100f) / 100f;
+                }
+                else
                 {
                     currTemp = boilingTemp;
                 }
-                currTemp = Mathf.Round(currTemp * 100f) / 100f;
+                if (currTemp == boilingTemp && time - Storage.GetTimeAfterBoiling() <= 0)
+                {
+                    currTemp = currTemp + tempPerSecondAfterBoiling;
+                    if (currTemp <= Storage.GetT2Value())
+                    {
+                        currTemp = Storage.GetT2Value();
+                    }
+                    currTemp = Mathf.Round(currTemp * 100f) / 100f;
+                }
             }
             else
             {
-                currTemp = boilingTemp;
-            }
-            if(currTemp == boilingTemp && time - Storage.GetTimeAfterBoiling() <= 0)
-            {
-                currTemp = currTemp + tempPerSecondAfterBoiling;
-                if (currTemp <= Storage.GetT2Value())
+                if (currTemp < Storage.GetT2Value())
+                {
+                    Debug.Log("halo");
+                    currTemp = currTemp + tempPerSecondBeforeBoiling;
+                    if (currTemp >= Storage.GetT2Value())
+                    {
+                        currTemp = Storage.GetT2Value();
+                    }
+                    currTemp = Mathf.Round(currTemp * 100f) / 100f;
+                }
+                else
                 {
                     currTemp = Storage.GetT2Value();
                 }
-                currTemp = Mathf.Round(currTemp * 100f) / 100f;
             }
+            
+            
         }
         
         

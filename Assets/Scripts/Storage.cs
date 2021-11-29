@@ -67,6 +67,16 @@ public class Storage : MonoBehaviour
         return timeBeforeBoiling;
     }
 
+    public float GetTimeBeforeT2()
+    {
+        float Cliquid = 4.1899f;           // J/(g * °C )
+        float boilingTemp = Mathf.Pow((1.0f / 100.0f) - (8.3145f * Mathf.Log(pressureValue / 1000.0f) / 2257.0f), -1.0f);
+
+        float timeBeforeBoiling = (massValue * Cliquid * (t2Value - t1Value)) / ((efficiencyValue / 100) * powerValue);
+
+        return timeBeforeBoiling;
+    }
+
     public float GetTimeAfterBoiling()
     {
         float Cgas = 1.890f;              // J/(g * °C )
@@ -92,14 +102,14 @@ public class Storage : MonoBehaviour
 
 
 
-        if (t2Value > boilingTemp)
+        if (t2Value >= boilingTemp)
         {
             time = ((massValue * Cliquid * (boilingTemp - t1Value)) + (n * deltaH * 1000) + (massValue * Cgas * (t2Value - boilingTemp))) / ((efficiencyValue / 100) * powerValue);
             lessThanBoilingTemp = false;
         }
         else
         {
-            time = (massValue * Cliquid * (boilingTemp - t1Value)) / ((efficiencyValue / 100) * powerValue);
+            time = (massValue * Cliquid * (t2Value - t1Value)) / ((efficiencyValue / 100) * powerValue);
             lessThanBoilingTemp = true;
         }
 
