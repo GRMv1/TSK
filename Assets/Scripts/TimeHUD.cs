@@ -22,6 +22,10 @@ public class TimeHUD : MonoBehaviour
     Text T1txt;
     Text T2txt;
 
+    bool passedBoilingTemp = false;
+
+    float speed;
+
 
     bool passed = false;
     // Start is called before the first frame update
@@ -46,17 +50,22 @@ public class TimeHUD : MonoBehaviour
         boilingTemp = Mathf.Round(boilingTemp);
         boilingTempTxt.text = boilingTemp.ToString();
 
-        InvokeRepeating("TimeRemaining", 0.0f, 1f);
+        speed = Storage.speed;
+
+        InvokeRepeating("TimeRemaining", 0.0f, 1/speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        elapsed += Time.deltaTime;
-        if (elapsed >= 1f)
+        if(elapsed == 0f)
         {
-            elapsed = elapsed % 1f;
+            currentTempTxt.text = (CurrentTemp()).ToString();
+        }
+        elapsed += Time.deltaTime;
+        if (elapsed >= 1/speed)
+        {
+            elapsed = elapsed % (1/speed);
             currentTempTxt.text = (CurrentTemp()).ToString();
         }
 
@@ -71,7 +80,7 @@ public class TimeHUD : MonoBehaviour
                 if ( (time - Storage.GetTurnToSteamTime() - Storage.GetTimeAfterBoiling() <= 0) && !invokeOnce && !Storage.lessThanBoilingTemp)
                 {
                     
-                    InvokeRepeating("Evaporation", 0.0f, kettle.secondsToEvaporate);
+                    InvokeRepeating("Evaporation", 0.0f, kettle.secondsToEvaporate/speed);
                     invokeOnce = true;
                 }
             }
@@ -100,15 +109,15 @@ public class TimeHUD : MonoBehaviour
 
         if (Storage.GetT2Value() < boilingTemp)
         {
-            tempPerSecondBeforeBoiling = (Storage.GetT2Value() - Storage.GetT1Value()) / Storage.GetTimeBeforeT2();
+            tempPerSecondBeforeBoiling = ((Storage.GetT2Value() - Storage.GetT1Value())) / Storage.GetTimeBeforeT2();
         }
         else
         {
-            tempPerSecondBeforeBoiling = (Storage.GetBoilingTemp() - Storage.GetT1Value()) / Storage.GetTimeBeforeBoiling();
+            tempPerSecondBeforeBoiling = ((Storage.GetBoilingTemp() - Storage.GetT1Value())) / Storage.GetTimeBeforeBoiling();
         }
         
 
-        float tempPerSecondAfterBoiling = (Storage.GetT2Value() - Storage.GetBoilingTemp()) / Storage.GetTimeAfterBoiling();
+        float tempPerSecondAfterBoiling = ((Storage.GetT2Value() - Storage.GetBoilingTemp())) / Storage.GetTimeAfterBoiling();
 
         if (currTemp == -1.0f)
         {
@@ -122,7 +131,7 @@ public class TimeHUD : MonoBehaviour
                 if (currTemp < boilingTemp)
                 {
                     currTemp = currTemp + tempPerSecondBeforeBoiling;
-                    if (currTemp > boilingTemp)
+                    if (currTemp >= boilingTemp)
                     {
                         currTemp = boilingTemp;
                     }
@@ -130,17 +139,27 @@ public class TimeHUD : MonoBehaviour
                 }
                 else
                 {
-                    currTemp = boilingTemp;
-                }
-                if (currTemp == boilingTemp && time - Storage.GetTimeAfterBoiling() <= 0)
-                {
-                    currTemp = currTemp + tempPerSecondAfterBoiling;
-                    if (currTemp <= Storage.GetT2Value())
+                    if(time - Storage.GetTimeAfterBoiling() <= 0)
                     {
-                        currTemp = Storage.GetT2Value();
+                        passedBoilingTemp = true;
                     }
-                    currTemp = Mathf.Round(currTemp * 100f) / 100f;
+                    if(passedBoilingTemp)
+                    {
+                        currTemp = currTemp + tempPerSecondAfterBoiling;
+                        if (currTemp >= Storage.GetT2Value())
+                        {
+                            currTemp = Storage.GetT2Value();
+                        }
+                        currTemp = Mathf.Round(currTemp * 100f) / 100f;
+                    }
+                    else
+                    {
+                        currTemp = boilingTemp;
+                    }
+                   
+                    
                 }
+                
             }
             else
             {

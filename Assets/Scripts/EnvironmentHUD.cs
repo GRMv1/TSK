@@ -9,12 +9,15 @@ public class EnvironmentHUD : MonoBehaviour
     public GameObject TimeHUD;
 
     public static float pressureValue = 75;
+    public static float speedValue = 1f;
 
     Text pressureValueTxt;
+    Text speedValueTxt;
     // Start is called before the first frame update
     void Start()
     {
         pressureValueTxt = this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<Text>();
+        speedValueTxt = this.gameObject.transform.GetChild(1).GetChild(2).GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -33,5 +36,10 @@ public class EnvironmentHUD : MonoBehaviour
     {
         pressureValue = value;
         pressureValueTxt.text = value.ToString();
+    }
+    public void ChangeSpeedValue(float value)
+    {
+        speedValue = value;
+        speedValueTxt.text = value.ToString();
     }
 }

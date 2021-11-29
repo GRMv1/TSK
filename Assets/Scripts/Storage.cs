@@ -11,6 +11,7 @@ public class Storage : MonoBehaviour
     public static float efficiencyValue;    //%
     public static float pressureValue;      //hPa
     public bool lessThanBoilingTemp;
+    public float speed;
     
 
     [SerializeField]
@@ -45,6 +46,7 @@ public class Storage : MonoBehaviour
         if (envHUD.activeSelf)
         {
             pressureValue = EnvironmentHUD.pressureValue;
+            speed = EnvironmentHUD.speedValue;
         }
     }
 
