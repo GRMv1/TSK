@@ -19,6 +19,9 @@ public class TimeHUD : MonoBehaviour
     Text currentTempTxt;
     float currTemp = -1.0f;
 
+    Text T1txt;
+    Text T2txt;
+
 
     bool passed = false;
     // Start is called before the first frame update
@@ -27,7 +30,13 @@ public class TimeHUD : MonoBehaviour
         timeTxt = this.gameObject.transform.GetChild(1).GetComponent<Text>();
         boilingTempTxt = this.gameObject.transform.GetChild(3).GetComponent<Text>();
         currentTempTxt = this.gameObject.transform.GetChild(5).GetComponent<Text>();
-        
+        T1txt = this.gameObject.transform.GetChild(7).GetComponent<Text>();
+        T2txt = this.gameObject.transform.GetChild(9).GetComponent<Text>();
+
+        T1txt.text = Storage.GetT1Value().ToString();
+
+        T2txt.text = Storage.GetT2Value().ToString();
+
 
         time = Storage.GetTime();
         time = Mathf.Round(time);
