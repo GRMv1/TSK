@@ -21,6 +21,7 @@ public class TimeHUD : MonoBehaviour
 
     Text T1txt;
     Text T2txt;
+    Text speedTxt;
 
     bool passedBoilingTemp = false;
 
@@ -36,10 +37,13 @@ public class TimeHUD : MonoBehaviour
         currentTempTxt = this.gameObject.transform.GetChild(5).GetComponent<Text>();
         T1txt = this.gameObject.transform.GetChild(7).GetComponent<Text>();
         T2txt = this.gameObject.transform.GetChild(9).GetComponent<Text>();
+        speedTxt = this.gameObject.transform.GetChild(11).GetComponent<Text>();
 
         T1txt.text = Storage.GetT1Value().ToString();
 
         T2txt.text = Storage.GetT2Value().ToString();
+
+        
 
 
         time = Storage.GetTime();
@@ -51,6 +55,8 @@ public class TimeHUD : MonoBehaviour
         boilingTempTxt.text = boilingTemp.ToString();
 
         speed = Storage.speed;
+
+        speedTxt.text = "x" + speed;
 
         InvokeRepeating("TimeRemaining", 0.0f, 1/speed);
     }
