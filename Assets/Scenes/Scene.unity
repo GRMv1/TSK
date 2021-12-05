@@ -3690,13 +3690,13 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 52.64
+  m_EdgeRadius: 91.31
   m_Points:
-  - {x: -1.37, y: 2.69}
-  - {x: -2.3, y: -2.5458014}
-  - {x: 2.354681, y: -2.5377593}
-  - {x: 1.1721072, y: 2.4187312}
-  - {x: -1.3295708, y: 2.4270244}
+  - {x: -1.6, y: 3.07}
+  - {x: -2.63, y: -2.85}
+  - {x: 2.67, y: -2.83}
+  - {x: 1.38, y: 2.67}
+  - {x: -1.64, y: 2.67}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -5373,6 +5373,10 @@ PrefabInstance:
       propertyPath: storage
       value: 
       objectReference: {fileID: 555148318}
+    - target: {fileID: 793470893812133904, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1356974241539927833, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: wiggleSpeedX
       value: 0
@@ -5387,19 +5391,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7304086860540915169, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 127.3785
       objectReference: {fileID: 0}
     - target: {fileID: 7304086860540915169, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 127.3785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304086860540915169, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.54757
       objectReference: {fileID: 0}
     - target: {fileID: 7304086860540915169, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7304086860540915169, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.36
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 7304086860540915169, guid: 0f8933b2637f12245b13de0b86845ea0, type: 3}
       propertyPath: m_LocalPosition.z
