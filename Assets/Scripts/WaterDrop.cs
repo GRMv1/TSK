@@ -6,7 +6,7 @@ public class WaterDrop : MonoBehaviour
 {
     public float wiggleSpeedY = 0.0f;
     float wiggleSpeedX = 0.0f;
-    public static float maxSpeedY = 0.15f;
+    public static float maxSpeedY = 1.5f;
 
     bool steam = false;
 
