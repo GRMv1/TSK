@@ -32,7 +32,7 @@ public class Storage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(liquidHUD.activeSelf)
+        if (liquidHUD.activeSelf)
         {
             massValue = LiquidHUD.massValue;
             t1Value = LiquidHUD.t1Value;
@@ -47,6 +47,11 @@ public class Storage : MonoBehaviour
         {
             pressureValue = EnvironmentHUD.pressureValue;
             speed = EnvironmentHUD.speedValue;
+        }
+
+        if (Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
         }
     }
 
